@@ -16,7 +16,11 @@ class App extends React.Component {
 
   searchYelp(term, location, sortBy) {
     return Yelp.search(term, location, sortBy).then(businesses => {
-      this.setState({businesses: businesses})
+      if(businesses !== undefined){
+        this.setState({businesses: businesses})
+      } else {
+        alert(location + " returned with no results");  
+      }
     });
   }
 
